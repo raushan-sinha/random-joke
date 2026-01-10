@@ -1,14 +1,10 @@
+import React from 'react';
+import JokeCard from './ui/JokeCard';
 
-
-function App() {
-
-  return (
-    <>
-      <h1 class="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    </>
-  )
+const App = () => {
+    return (
+        <JokeCard />
+    );
 }
 
-export default App
+export default App;
