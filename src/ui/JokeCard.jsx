@@ -36,8 +36,9 @@ const JokeCard = () => {
                 </div>
 
                 {/* Footer */}
-                <footer className="mt-8 text-center text-xs text-gray-400">
-                    <span>#FrontendFun</span>
+                <footer className="mt-8 text-center text-xs text-gray-400 flex flex-row justify-between">
+                    <div><span className='text-base font-bolder'>#FrontendFun</span></div>
+                    <div><span className='cursor-pointer hover:text-cyan-600 hover:underline underline-offset-4 text-base font-bolder'>Blog</span></div>
                 </footer>
             </section>
         </main>
