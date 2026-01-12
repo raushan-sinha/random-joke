@@ -12,7 +12,7 @@ const JokeCard = () => {
         try {
             const responseAPI = await JOKEAPIRESPONSE('https://official-joke-api.appspot.com/random_joke');
             if (responseAPI) {
-                setShowJoke(`${responseAPI.setup} ------ ${responseAPI.punchline}`)
+                setShowJoke(`${responseAPI.setup} ~~~~~~> ${responseAPI.punchline}`)
             }
         } catch (error) {
             setShowError('Network connection is poor or disconnected. Please check your Network connection.');
@@ -22,7 +22,10 @@ const JokeCard = () => {
 
 
     //TODO: Create a logic to Clear Joke after showing -
-    const clearJoke = () => setShowJoke('');
+    const clearJoke = () => {
+        setShowJoke('')
+        setShowError('')
+    }
 
     //TODO: Auto focus on 'Get Joke' button -
     useEffect(() => {
@@ -54,7 +57,7 @@ const JokeCard = () => {
                 </p>
 
                 {showJoke ? (
-                    <div className='text-red-500 text-base font-mono'>{showJoke}</div>
+                    <div className='text-yellow-500 text-base font-mono'>{showJoke} 😂</div>
                 ) : (
                     <div className='text-red-500 text-base font-mono'>{showError}</div>
                 )}
