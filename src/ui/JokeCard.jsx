@@ -1,6 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { JOKEAPIRESPONSE } from '../service/helpJokeAPI';
 
 const JokeCard = () => {
+    const [showJoke, setShowJoke] = useState('');
+    const [showError, setShowError] = useState('');
+
+    const handleJoke = async (e) => {
+        try {
+            const responseAPI = await JOKEAPIRESPONSE('https://official-joke-api.appspot.com/random_joke');
+            // console.log('API Data', responseAPI);
+            if (responseAPI) {
+                setShowJoke(`${responseAPI.setup} ------ ${responseAPI.punchline}`)
+            }
+        } catch (error) {
+            setShowError('Network connection is poor or disconnected. Please check your Network connection.');
+            console.error('Error fetching joke:', error);
+        }
+    }
+
     return (
         <main className="min-h-screen flex items-center justify-center px-4 bg-linear-to-br from-indigo-950 via-slate-900 to-black text-white overflow-hidden relative">
             {/* Ambient Background Glow */}
@@ -24,9 +42,16 @@ const JokeCard = () => {
                     Click the button and unlock some laughter 🚀
                 </p>
 
+                {showJoke ? (
+                    <div className='text-red-500 text-base font-mono'>{showJoke}</div>
+                ) : (
+                    <div className='text-red-500 text-base font-mono'>{showError}</div>
+                )}
+
+                <br />
                 {/* Actions */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                    <button id="joke-button" className="w-full sm:w-1/2 py-3 rounded-xl font-semibold bg-linear-to-r from-emerald-400 to-teal-500  text-black transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 cursor-pointer">
+                    <button id="joke-button" className="w-full sm:w-1/2 py-3 rounded-xl font-semibold bg-linear-to-r from-emerald-400 to-teal-500  text-black transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 cursor-pointer" onClick={handleJoke}>
                         Get Joke 😄
                     </button>
 
@@ -37,8 +62,12 @@ const JokeCard = () => {
 
                 {/* Footer */}
                 <footer className="mt-8 text-center text-xs text-gray-400 flex flex-row justify-between">
-                    <div><span className='text-base font-bolder'>#FrontendFun</span></div>
-                    <div><span className='cursor-pointer hover:text-cyan-600 hover:underline underline-offset-4 text-base font-bolder'>Blog</span></div>
+                    <div>
+                        <span className='text-base font-bolder'>#FrontendFun</span>
+                    </div>
+                    <div>
+                        <Link to='/blog' className='cursor-pointer hover:text-cyan-600 hover:underline underline-offset-4 text-base font-bolder'>Blog</Link>
+                    </div>
                 </footer>
             </section>
         </main>
