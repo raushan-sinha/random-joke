@@ -19,6 +19,11 @@ const JokeCard = () => {
         }
     }
 
+
+    //TODO: Create a logic to Clear Joke after showing -
+    const clearJoke = () => setShowJoke('');
+
+
     return (
         <main className="min-h-screen flex items-center justify-center px-4 bg-linear-to-br from-indigo-950 via-slate-900 to-black text-white overflow-hidden relative">
             {/* Ambient Background Glow */}
@@ -55,7 +60,7 @@ const JokeCard = () => {
                         Get Joke 😄
                     </button>
 
-                    <button id="joke-clear" className="w-full sm:w-1/2 py-3 rounded-xl font-semibold bg-white/10 border border-white/20 transition-all duration-300 hover:bg-white/20 hover:scale-105 active:scale-95 cursor-pointer">
+                    <button id="joke-clear" className="w-full sm:w-1/2 py-3 rounded-xl font-semibold bg-white/10 border border-white/20 transition-all duration-300 hover:bg-white/20 hover:scale-105 active:scale-95 cursor-pointer" onClick={clearJoke}>
                         Clear
                     </button>
                 </div>
