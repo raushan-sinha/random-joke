@@ -6,10 +6,9 @@ const JokeCard = () => {
     const [showJoke, setShowJoke] = useState('');
     const [showError, setShowError] = useState('');
 
-    const handleJoke = async (e) => {
+    const handleJoke = async () => {
         try {
             const responseAPI = await JOKEAPIRESPONSE('https://official-joke-api.appspot.com/random_joke');
-            // console.log('API Data', responseAPI);
             if (responseAPI) {
                 setShowJoke(`${responseAPI.setup} ------ ${responseAPI.punchline}`)
             }
