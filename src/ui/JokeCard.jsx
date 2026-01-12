@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { JOKEAPIRESPONSE } from '../service/helpJokeAPI';
 
 const JokeCard = () => {
     const [showJoke, setShowJoke] = useState('');
     const [showError, setShowError] = useState('');
+    const focusBtn = useRef(null);
 
     //TODO: Fetch the API of 'Random Joke'
     const handleJoke = async () => {
@@ -22,6 +23,11 @@ const JokeCard = () => {
 
     //TODO: Create a logic to Clear Joke after showing -
     const clearJoke = () => setShowJoke('');
+
+    //TODO: Auto focus on 'Get Joke' button -
+    useEffect(() => {
+        focusBtn.current.focus();
+    }, []);
 
 
     return (
@@ -56,7 +62,7 @@ const JokeCard = () => {
                 <br />
                 {/* Actions */}
                 <div className="flex flex-col sm:flex-row gap-4">
-                    <button id="joke-button" className="w-full sm:w-1/2 py-3 rounded-xl font-semibold bg-linear-to-r from-emerald-400 to-teal-500  text-black transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 cursor-pointer" onClick={handleJoke}>
+                    <button id="joke-button" className="w-full sm:w-1/2 py-3 rounded-xl font-semibold bg-linear-to-r from-emerald-400 to-teal-500  text-black transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 cursor-pointer" onClick={handleJoke} ref={focusBtn}>
                         Get Joke 😄
                     </button>
 
