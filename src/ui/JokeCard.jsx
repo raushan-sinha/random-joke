@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { JOKEAPIRESPONSE } from '../service/helpJokeAPI';
-import ThemeButton from '../component/ThemeButton';
 
 const JokeCard = () => {
     const [showJoke, setShowJoke] = useState('');
@@ -78,9 +77,6 @@ const JokeCard = () => {
                     </div>
                     <div>
                         <Link to='/blog' className='cursor-pointer hover:text-cyan-600 hover:underline underline-offset-4 text-base font-bolder'>Blog</Link>
-                    </div>
-                    <div>
-                        <ThemeButton />
                     </div>
                 </footer>
             </section>
