@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { JOKEAPIRESPONSE } from '../service/helpJokeAPI';
+import ThemeButton from '../component/ThemeButton';
 
 const JokeCard = () => {
     const [showJoke, setShowJoke] = useState('');
@@ -27,17 +28,13 @@ const JokeCard = () => {
         setShowError('')
     }
 
-    //TODO: Auto focus on 'Get Joke' button -
+    //TODO: Auto focus on 'Get Joke' button 
     useEffect(() => {
         focusBtn.current.focus();
     }, []);
 
-
     return (
-        <main className="min-h-screen flex items-center justify-center px-4 bg-linear-to-br from-indigo-950 via-slate-900 to-black text-white overflow-hidden relative">
-            {/* Ambient Background Glow */}
-            <div className="pointer-events-none absolute -top-40 -left-40 w-96 h-96 bg-purple-600/30 rounded-full blur-3xl"></div>
-            <div className="pointer-events-none absolute top-1/3 -right-40 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl"></div>
+        <main className='min-h-screen flex items-center justify-center px-4 bg-[#101923] text-black overflow-hidden relative'>
 
             {/* Card */}
             <section className="relative w-full max-w-md md:max-w-lg backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-6 sm:p-8 shadow-2xl transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-purple-500/30">
@@ -81,6 +78,9 @@ const JokeCard = () => {
                     </div>
                     <div>
                         <Link to='/blog' className='cursor-pointer hover:text-cyan-600 hover:underline underline-offset-4 text-base font-bolder'>Blog</Link>
+                    </div>
+                    <div>
+                        <ThemeButton />
                     </div>
                 </footer>
             </section>
