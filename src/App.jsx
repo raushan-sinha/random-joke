@@ -1,16 +1,13 @@
 import React from 'react';
-import JokeCard from './ui/JokeCard';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import BlogPage from './ui/BlogPage';
+import AppProviders from './AppProviders';
+import AppRoutes from './AppRoutes';
+
 
 const App = () => {
     return (
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<JokeCard />} />
-                    <Route path='/blog' element={<BlogPage />} />
-                </Routes>
-            </BrowserRouter>
+        <AppProviders>
+            <AppRoutes />
+        </AppProviders>
     );
 }
 
